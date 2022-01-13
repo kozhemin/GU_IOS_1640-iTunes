@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		97E6BC382790C56400534D56 /* AppDetailHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6BC372790C56400534D56 /* AppDetailHeaderViewController.swift */; };
 		97E6BC3A2790C57F00534D56 /* AppDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6BC392790C57F00534D56 /* AppDetailHeaderView.swift */; };
+		97E6BC3D2790CFD600534D56 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6BC3C2790CFD600534D56 /* SearchPresenter.swift */; };
+		97E6BC402790D4D300534D56 /* SearchModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E6BC3F2790D4D300534D56 /* SearchModuleBuilder.swift */; };
 		BD53E3BC619D0BEDDE44AD76 /* Pods_iOSArchitecturesDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEA6AF9F424A0D5873D2723 /* Pods_iOSArchitecturesDemo.framework */; };
 		E0E1D2932034A3350011E01A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1D2922034A3350011E01A /* AppDelegate.swift */; };
 		E0E1D2952034A3350011E01A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1D2942034A3350011E01A /* SearchViewController.swift */; };
@@ -36,6 +38,8 @@
 		8EEA6AF9F424A0D5873D2723 /* Pods_iOSArchitecturesDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSArchitecturesDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97E6BC372790C56400534D56 /* AppDetailHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailHeaderViewController.swift; sourceTree = "<group>"; };
 		97E6BC392790C57F00534D56 /* AppDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailHeaderView.swift; sourceTree = "<group>"; };
+		97E6BC3C2790CFD600534D56 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		97E6BC3F2790D4D300534D56 /* SearchModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleBuilder.swift; sourceTree = "<group>"; };
 		A067E149D296BC0C249FD11F /* Pods-iOSArchitecturesDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSArchitecturesDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSArchitecturesDemo/Pods-iOSArchitecturesDemo.release.xcconfig"; sourceTree = "<group>"; };
 		E0E1D28F2034A3350011E01A /* iOSArchitecturesDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSArchitecturesDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E1D2922034A3350011E01A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +83,22 @@
 				A067E149D296BC0C249FD11F /* Pods-iOSArchitecturesDemo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		97E6BC3B2790CFBF00534D56 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				97E6BC3C2790CFD600534D56 /* SearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		97E6BC3E2790D4C300534D56 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				97E6BC3F2790D4D300534D56 /* SearchModuleBuilder.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 		DB95456C2F2DCD400ABCE8E9 /* Frameworks */ = {
@@ -130,6 +150,8 @@
 		E0E1D2A62034A36C0011E01A /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				97E6BC3E2790D4C300534D56 /* Builder */,
+				97E6BC3B2790CFBF00534D56 /* Presenter */,
 				F8A97B3622498F0C00FB2C0E /* View */,
 				F8114FBF22A3E5D500102830 /* Controller */,
 			);
@@ -401,8 +423,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97E6BC402790D4D300534D56 /* SearchModuleBuilder.swift in Sources */,
 				E0E1D399203AE62E0011E01A /* ITunesApp.swift in Sources */,
 				97E6BC3A2790C57F00534D56 /* AppDetailHeaderView.swift in Sources */,
+				97E6BC3D2790CFD600534D56 /* SearchPresenter.swift in Sources */,
 				F8A97B352249898E00FB2C0E /* AppCell.swift in Sources */,
 				97E6BC382790C56400534D56 /* AppDetailHeaderViewController.swift in Sources */,
 				F8114FC522A3E77500102830 /* AppDetailView.swift in Sources */,

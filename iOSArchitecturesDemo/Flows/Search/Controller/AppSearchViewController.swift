@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class AppSearchViewController: UIViewController {
     
     // MARK: - Private Properties
     
@@ -30,10 +30,10 @@ final class SearchViewController: UIViewController {
         static let reuseIdentifier = "reuseId"
     }
     
-    private let presenter: SearchViewOutput
+    private let presenter: AppSearchViewOutput
     
     
-    init(presenter: SearchViewOutput) {
+    init(presenter: AppSearchViewOutput) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -65,7 +65,7 @@ final class SearchViewController: UIViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension SearchViewController: UITableViewDataSource {
+extension AppSearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchResults.count
@@ -84,7 +84,7 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension SearchViewController: UITableViewDelegate {
+extension AppSearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -94,7 +94,7 @@ extension SearchViewController: UITableViewDelegate {
 }
 
 //MARK: - UISearchBarDelegate
-extension SearchViewController: UISearchBarDelegate {
+extension AppSearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text else {
@@ -110,7 +110,7 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 // MARK: - Input
-extension SearchViewController: SearchViewInput {
+extension AppSearchViewController: AppSearchViewInput {
     
     func showError(error: Error) {
         let alert = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
@@ -120,7 +120,6 @@ extension SearchViewController: SearchViewInput {
     }
     
     func showNoResults() {
-//        self.emptyResultView.isHidden = false
         self.searchResults = []
         self.searchView.tableView.reloadData()
     }

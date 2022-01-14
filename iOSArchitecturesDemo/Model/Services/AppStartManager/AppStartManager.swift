@@ -17,7 +17,7 @@ final class AppStartManager {
     }
     
     func start() {
-        let rootVC = SearchModuleBuilder.build()
+        let rootVC = getRandomRootController()
         
         rootVC.navigationItem.title = "Search via iTunes"
         
@@ -36,4 +36,8 @@ final class AppStartManager {
         navVC.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         return navVC
     }()
+    
+    private func getRandomRootController() -> UIViewController {
+        Bool.random() ? SearchModuleBuilder.songBuild() : SearchModuleBuilder.appBuild()
+    }
 }

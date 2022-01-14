@@ -1,16 +1,16 @@
 //
-//  SearchPresenter.swift
+//  SongSearchPresenter.swift
 //  iOSArchitecturesDemo
 //
-//  Created by Егор Кожемин on 14.01.2022.
+//  Created by Егор Кожемин on 15.01.2022.
 //  Copyright © 2022 ekireev. All rights reserved.
 //
 
 import UIKit
 
-protocol SearchViewInput: class {
+protocol SongSearchViewInput: class {
     
-    var searchResults: [ITunesApp] { get set }
+    var searchResults: [ITunesSong] { get set }
     
     func showError(error: Error)
     
@@ -21,21 +21,21 @@ protocol SearchViewInput: class {
     func throbber(show: Bool)
 }
 
-protocol SearchViewOutput: class {
+protocol SongSearchViewOutput: class {
     
     func viewDidSearch(with query: String)
     
-    func viewDidSelectApp(_ app: ITunesApp)
+    func viewDidSelectSong(_ app: ITunesSong)
 }
 
-final class SearchPresenter {
+final class SongSearchPresenter {
     
-    weak var viewInput: (UIViewController & SearchViewInput)?
+    weak var viewInput: (UIViewController & SongSearchViewInput)?
     
     private let searchService = ITunesSearchService()
     
-    private func requestApps(with query: String) {
-        self.searchService.getApps(forQuery: query) { [weak self] result in
+    private func requestSong(with query: String) {
+        self.searchService.getSongs(forQuery: query) { [weak self] result in
             guard let self = self else { return }
             self.viewInput?.throbber(show: false)
             result
@@ -53,21 +53,21 @@ final class SearchPresenter {
         }
     }
     
-    private func openAppDetails(with app: ITunesApp) {
-        let appDetaillViewController = AppDetailViewController(app: app)
-        self.viewInput?.navigationController?.pushViewController(appDetaillViewController, animated: true)
+    private func openAppDetails(with song: ITunesSong) {
+        let songDetaillViewController = SongDetailViewController(song: song)
+        self.viewInput?.navigationController?.pushViewController(songDetaillViewController, animated: true)
     }
 }
 
 // MARK: - SearchViewOutput
-extension SearchPresenter: SearchViewOutput {
+extension SongSearchPresenter: SongSearchViewOutput {
     
     func viewDidSearch(with query: String) {
         self.viewInput?.throbber(show: true)
-        self.requestApps(with: query)
+        self.requestSong(with: query)
     }
-    
-    func viewDidSelectApp(_ app: ITunesApp) {
-        self.openAppDetails(with: app)
+     
+    func viewDidSelectSong(_ song: ITunesSong) {
+        self.openAppDetails(with: song)
     }
 }

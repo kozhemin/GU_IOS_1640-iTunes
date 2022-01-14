@@ -14,11 +14,9 @@ final class AppDetailViewController: UIViewController {
     
     lazy var headerViewController = AppDetailHeaderViewController(app: self.app)
     
-    private let imageDownloader = ImageDownloader()
+    lazy var descriptionViewController = AppDescriptionViewController(app: self.app)
     
-    private var appDetailView: AppDetailView {
-        return self.view as! AppDetailView
-    }
+    private let imageDownloader = ImageDownloader()
     
     init(app: ITunesApp) {
         self.app = app
@@ -55,12 +53,8 @@ final class AppDetailViewController: UIViewController {
         ])
     }
     
-    
     private func addDescriptionViewController() {
-        // TODO: ДЗ, сделать другие сабмодули
-        let descriptionViewController = UIViewController()
-        
-        self.addChild(descriptionViewController)
+        self.addChild(self.descriptionViewController)
         self.view.addSubview(descriptionViewController.view)
         descriptionViewController.didMove(toParent: self)
         

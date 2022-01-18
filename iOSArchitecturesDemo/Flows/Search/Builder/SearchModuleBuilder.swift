@@ -11,9 +11,14 @@ import UIKit
 final class SearchModuleBuilder {
     
     static func appBuild() -> (UIViewController & AppSearchViewInput) {
-        let presenter = AppSearchPresenter()
+        let router = SearchRouter()
+        let interactor = SearchInteractor()
+        let presenter = AppSearchPresenter(interactor: interactor, router: router)
         let viewController = AppSearchViewController(presenter: presenter)
+        
         presenter.viewInput = viewController
+        router.viewController = viewController
+        
         return viewController
     }
     
